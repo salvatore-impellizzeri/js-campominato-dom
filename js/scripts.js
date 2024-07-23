@@ -1,9 +1,12 @@
 const button = document.getElementById("play");
 const contenitore = document.getElementById("container-main");
-const risultato = document.getElementById("result")
+let risultato = document.getElementById("result");
+let reset = false;
 
 button.addEventListener("click", function(){
     
+    risultato.innerHTML = '';
+
     contenitore.innerHTML = '';
 
     const bombArrey = [];
@@ -34,19 +37,25 @@ button.addEventListener("click", function(){
             }
 
             if(bombArrey.includes(i)){
-                box.classList.toggle("wrong");
+                box.classList.add("wrong");
                 console.log("BOMB:", this.innerText);
                 risultato.innerHTML = `Mi dispiace hai perso! Il tuo punteggio è di ${score}`;
                 gameOver = true;
             }
 
             else if(!box.classList.contains("color")){
-                box.classList.toggle("color");
+                box.classList.add("color");
                 score ++;
                 console.log("this:", this.innerText);
             }
+
+            if(score == (100 - 16)){
+                risultato.innerHTML = "Hai vinto!";
+            }
         })
     }
+
+    
 })
 
 
