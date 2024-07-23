@@ -1,7 +1,6 @@
 const button = document.getElementById("play");
 const contenitore = document.getElementById("container-main");
 let risultato = document.getElementById("result");
-let reset = false;
 
 button.addEventListener("click", function(){
     
