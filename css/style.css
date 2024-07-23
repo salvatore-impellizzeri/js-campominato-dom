@@ -57,20 +57,18 @@ main {
 }
 
 .color{
-    background-color: lightcoral;
+    background-color: blue;
+}
+
+.wrong{
+    background-color: red;
+}
+
+#result{
+    font-size: 50px;
+    margin-bottom: 100px;
 }
 
 /* 
                     FOOTER
-*/
-
-
-
-/* 
-                    DEBUG
-*/
-
-
-/* 
-                    RESPONSIVE
 */
