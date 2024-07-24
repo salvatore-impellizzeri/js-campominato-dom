@@ -1,6 +1,7 @@
-const button = document.getElementById("play");
+const button = document.querySelector(".play");
 const contenitore = document.getElementById("container-main");
 let risultato = document.getElementById("result");
+let livello = document.getElementById("level");
 
 button.addEventListener("click", function(){
     
@@ -8,9 +9,27 @@ button.addEventListener("click", function(){
 
     contenitore.innerHTML = '';
 
-    const bombArrey = [];
+    let cellsNumber = 0;
+    let level = livello.value;
+
+    if(livello.value == "Easy"){
+        cellsNumber = 49;
+        columns = 7;
+    }
+
+    else if(livello.value == "Medium"){
+        cellsNumber = 81;
+        columns = 9;
+    }
+
+    else if(livello.value == "Hard"){
+        cellsNumber = 100;
+        columns = 10;
+    }
+
+    let bombArrey = [];
     for(let j = 0; j < 16; j++){
-        bomb = Math.floor(Math.random() * 100) + 1;
+        bomb = Math.floor(Math.random() * cellsNumber) + 1;
         if(bombArrey.includes(bomb)){
             j--;
         }
@@ -24,9 +43,10 @@ button.addEventListener("click", function(){
     let score = 0;
     let gameOver = false;
 
-    for(let i = 1; i <= 100; i++){
+    for(let i = 1; i <= cellsNumber; i++){
         const box = document.createElement("div");
-        box.classList.add("my-grid");    
+        box.classList.add("my-grid");
+        box.style.flexBasis = `${100 / columns}%`;
         contenitore.append(box);
         box.innerHTML = i;
 
@@ -48,14 +68,9 @@ button.addEventListener("click", function(){
                 console.log("this:", this.innerText);
             }
 
-            if(score == (100 - 16)){
+            if(score == (cellsNumber - 16)){
                 risultato.innerHTML = "Hai vinto!";
             }
         })
     }
-
-    
 })
-
-
-
